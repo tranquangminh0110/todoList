@@ -1,5 +1,6 @@
 $(document).ready(function (event) {
     $('.day-task').addClass('clicked');
+    
     $('.input-field-task').on('input', function () {
         if (this.value === '') {
             $('.label-input').css('visibility', 'visible');
@@ -21,5 +22,21 @@ $(document).ready(function (event) {
         $('.work-task').addClass('clicked');
         $('.work-task-box').show();
         $('.day-task-box').hide();
+    });
+
+
+    // var lengthList = $('.list-new-task li').length;
+    // for (var i = 0 ; i < lengthList; i++) {
+    //     var className = 'item'+i;
+       
+    // }
+
+    $("input[type='checkbox']").click(function(e){
+        var span = $($(`span[class='${this.value}']`));
+        if (this.checked) {
+            span.css('text-decoration','line-through');
+        }else {
+            span.css('text-decoration','none');
+        }
     });
 });

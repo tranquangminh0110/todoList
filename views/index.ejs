@@ -54,10 +54,13 @@
                         </div>
                         <div class="list-new-task">
                             <ul>
-                                <% if(locals.listDayTodo) { listDayTodo.forEach(x=> {%>
+                                <% if(locals.listDayTodo) { listDayTodo.forEach((x, index)=> {
+                                    var className = 'itemd'+index;
+                                    
+                                    %>
                                     <li>
-                                        <input type="checkbox">
-                                        <span>
+                                        <input type="checkbox" value="<%=className%>">
+                                        <span class="<%=className%>">
 
                                             <%=x%>
                                         </span>
@@ -91,11 +94,15 @@
                         </div>
                         <div class="list-new-task">
                             <ul>
-                                <% if(locals.listDayTodo) { listWorkTodo.forEach(x=> {%>
+                                <% if(locals.listDayTodo) { listDayTodo.forEach((x, index)=> {
+                                    var className = 'itemw'+index;
+                                    
+                                    %>
                                     <li>
-                                        <input type="checkbox">
-                                        <span>
-                                            <%=x %>
+                                        <input type="checkbox" value="<%=className%>">
+                                        <span class="<%=className%>">
+
+                                            <%=x%>
                                         </span>
                                         <i class="fa-solid fa-chevron-right"></i>
                                     </li>
