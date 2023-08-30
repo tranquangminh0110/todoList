@@ -1,0 +1,115 @@
+<%-include("partials/header.ejs") %>
+
+    <body>
+        <div class="container-fluid">
+            <div class="row main">
+                <div class="menu-site col-lg-3">
+                    <ul class="slide-bar">
+                        <li class="header-task">
+                            <div class="title-task">
+                                <span>Menu</span>
+                            </div>
+                            <div class="search-task">
+                                <div class="search">
+                                    <i class="fas fa-search"></i>
+                                    <span>Search</span>
+                                </div>
+                            </div>
+                        </li>
+                        <span class="title-menu">TASK</span>
+                        <li class="list-task">
+                            <a class="day-task" href="#">
+                                <span><i class="fa-solid fa-list-check"></i>Today</span>
+                                <span class="count-num">
+                                    <%=amountTodoDayList%>
+                                </span></a>
+                            <a class="work-task" href="#"><span><i
+                                        class="fa-solid fa-calendar-days"></i>Work</span><span class="count-num">
+                                    <%=amountTodoWorkList%>
+                                </span></a>
+                        </li>
+                        <hr />
+                        <li class="status-app">
+                            <a class="sign-out" href="#">
+                                <span><i class="fa-solid fa-right-from-bracket"></i>Sign out</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="detail-site col-lg-9 day-task-box">
+                    <div class="main-text">
+                        <h1 class="main-text-title">Today</h1>
+                        <span class="main-text-count">
+                            <%=amountTodoDayList%>
+                        </span>
+                    </div>
+                    <div class="main-task">
+                        <div class="input-new-task">
+                            <form action="/submit" method="POST">
+                                <input class="input-field-task" type="text" name="todoDayString" required />
+                            </form>
+                            <div class="label-input">
+                                <label><i class="fa-solid fa-plus"></i>Add new task</label>
+                            </div>
+                        </div>
+                        <div class="list-new-task">
+                            <ul>
+                                <% if(locals.listDayTodo) { listDayTodo.forEach(x=> {%>
+                                    <li>
+                                        <input type="checkbox">
+                                        <span>
+
+                                            <%=x%>
+                                        </span>
+                                        <i class="fa-solid fa-chevron-right"></i>
+                                    </li>
+                                    <% }) }else{%>
+                                        <span>
+                                            Nothing
+                                        </span>
+                                        <%} %>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-site col-lg-9 work-task-box">
+                    <div class="main-text">
+                        <h1 class="main-text-title">Work</h1>
+                        <span class="main-text-count">
+                            <%=amountTodoWorkList%>
+                        </span>
+                    </div>
+                    <div class="main-task">
+                        <div class="input-new-task">
+                            <form action="/submit2" method="post">
+                                <input class="input-field-task" type="text" name="todoWorkString" required />
+                            </form>
+                            <div class="label-input">
+                                <label><i class="fa-solid fa-plus"></i>Add new task</label>
+                            </div>
+                        </div>
+                        <div class="list-new-task">
+                            <ul>
+                                <% if(locals.listDayTodo) { listWorkTodo.forEach(x=> {%>
+                                    <li>
+                                        <input type="checkbox">
+                                        <span>
+                                            <%=x %>
+                                        </span>
+                                        <i class="fa-solid fa-chevron-right"></i>
+                                    </li>
+                                    <% }) }else{%>
+                                        <span>
+                                            Nothing
+                                        </span>
+                                        <%} %>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <%-include("partials/footer.ejs") %>
